@@ -1,0 +1,208 @@
+['MissFortuneDaBes', 'sohlese']
+Sampling summoners from MissFortuneDaBes
+Sampling iteration 0 underway
+Sampling iteration 1 underway
+Error in accIds_from_match, match 4812971975, status 504
+Error when getting account ids from match_id 4812971975, Error 504
+Error in sample_summoners when getting most recent ranked game for account: FbuCg52M8dBA7whf6qDtmSpnrp9Lc7FUfysC8nFSJY16Bqef24Ict0vT, status: 404, skipping
+Sampling iteration 2 underway
+Error in sample_summoners when getting most recent ranked game for account: UGYSpKUam8XD3tcp8-TqZYLFwz1nK57yeGFUVYl3oyVEUQQ, status: 404, skipping
+Error in sample_summoners when getting most recent ranked game for account: 0udFLzqs2daj8K08eUGtolpppb9bVMWQuVFiHN8VmIkgGQ, status: 404, skipping
+Error in sample_summoners when getting most recent ranked game for account: YwXI33aMo_3iN1BK-5007ItuZNWivZeJUcAEjjUAeN8R8co, status: 404, skipping
+Error in sample_summoners when getting most recent ranked game for account: Si_Ec1gfrZn8_Q9BStbeaHWMbfMvHEzlYL1J45AElErbqCo, status: 404, skipping
+Error in sample_summoners when getting most recent ranked game for account: dqsegSWWHyMsWIobrIXBv1ubcTxkfxHLuifoGWwWQHIfmA, status: 404, skipping
+Error in sample_summoners when getting most recent ranked game for account: FbuCg52M8dBA7whf6qDtmSpnrp9Lc7FUfysC8nFSJY16Bqef24Ict0vT, status: 404, skipping
+Sampling summoners from sohlese
+Sampling iteration 0 underway
+Sampling iteration 1 underway
+Sampling iteration 2 underway
+Error in accIds_from_match, match 4811923056, status 504
+Error when getting account ids from match_id 4811923056, Error 504
+Error in sample_summoners when getting most recent ranked game for account: sjcnLLFXA_ONbXgdosGnFJH_gYKSaWGbToAadOP440E4Ajo, status: 404, skipping
+Error in sample_summoners when getting most recent ranked game for account: uS5QiaT_dzvSfoBHIOqdSYJ0-D1TPmN4_S9WS0scs_VhDg, status: 404, skipping
+[Finished in 588.799s]
+
+-------------------
+
+
+processing elo: silver
+processing account 0
+processing account 20
+processing account 40
+Couldnt get matchlist for account sjcnLLFXA_ONbXgdosGnFJH_gYKSaWGbToAadOP440E4Ajo, status 404
+processing account 60
+processing account 80
+Couldnt get matchlist for account uS5QiaT_dzvSfoBHIOqdSYJ0-D1TPmN4_S9WS0scs_VhDg, status 404
+processing account 100
+processing account 120
+processing account 140
+processing account 160
+Couldnt get matchlist for account uS5QiaT_dzvSfoBHIOqdSYJ0-D1TPmN4_S9WS0scs_VhDg, status 404
+processing account 180
+processing account 200
+Couldnt get matchlist for account 7htMbDD0ojd_kVfqEMOfDSKZbxwsnUgDiusKJfoZBsLcS2ndargoxFan, status 504
+Couldnt get matchlist for account sjcnLLFXA_ONbXgdosGnFJH_gYKSaWGbToAadOP440E4Ajo, status 404
+processing account 220
+processing account 240
+Couldnt get matchlist for account V1T5lYaOiKmqR5U6beheJH7pRLnibd63D6QH8T5_jLn-ObY, status 503
+processing account 260
+Couldnt get matchlist for account uS5QiaT_dzvSfoBHIOqdSYJ0-D1TPmN4_S9WS0scs_VhDg, status 404
+processing account 280
+Couldnt get matchlist for account TUE_z-OZQPzpRtMJtq_yJAN-rem94XiUUQjDAsLvHUvk0A, status 404
+processing account 300
+Couldnt get matchlist for account DKRPSd-QMHeSaKfwgpPRItNNIpkhw5AYQKbdV93zOo_bigs, status 404
+processing account 320
+processing account 340
+processing account 360
+processing account 380
+Couldnt get matchlist for account Q5xe7GEX4PjoHMh2SnUHeMKShLC4wT3Rk_i1I-4_xnLP0dU, status 404
+processing account 400
+processing account 420
+processing account 440
+processing account 460
+Couldnt get matchlist for account VWsJR2y6FF3TOA4AR08n_1nsq86DY7IHDNzGfr0GXl9dD0s, status 404
+Couldnt get matchlist for account 8QGzzR3fHPwVdgjgB60zyRk43sy9tOQeE4ej9h6lHT9-UDg, status 404
+processing account 480
+Couldnt get matchlist for account 1ncouyUrnzERqC0HYj8vFBexw9WsJIEniUL_AGOdw3b7KMs, status 404
+processing account 500
+Couldnt get matchlist for account sjcnLLFXA_ONbXgdosGnFJH_gYKSaWGbToAadOP440E4Ajo, status 404
+processing account 520
+Couldnt get matchlist for account sjcnLLFXA_ONbXgdosGnFJH_gYKSaWGbToAadOP440E4Ajo, status 404
+processing account 540
+Couldnt get matchlist for account n4ikxzWx7EqGcjHLOeejF5-1vRlR7hEoIioJPQCzPiMcV7Q, status 404
+Couldnt get matchlist for account vVUPOPpt76osfkmJRC3yr_2tkow9HDy0IdLO02fZgzxDgg, status 404
+processing account 560
+processing account 580
+processing account 600
+processing account 620
+Couldnt get matchlist for account _IhRSjP84VweiYLcRXxrsO6JVDyzPVcWSUXHVvGugBes9zg, status 404
+processing account 640
+processing account 660
+processing account 680
+Couldnt get matchlist for account xwRP-lhxG9IqMJNQiNQh7KwBjYjaadqazv44_EUO40teCZY, status 404
+processing account 700
+Couldnt get matchlist for account wPh2aLaABw84kOaC3__x-lmJ-nur6l-uc9BkH-OOoYxC7g, status 404
+Couldnt get matchlist for account Y-ZY2M-s7y4kCI5nB0T1XQGS-1O7iibEYKuIaJyxJ12SA3A, status 404
+processing account 720
+processing account 740
+processing account 760
+Couldnt get matchlist for account Eqnfppi_qWaIbYtBQ6GYN3wI1FSz9SwqWo2rnRA68oNBZKfgcJjwXHGl, status 404
+Couldnt get matchlist for account EBjma3d_RNhfao-7eNEK8e1QRLJuXjTwlyliiiEiHOtv2Pk, status 404
+Couldnt get matchlist for account 1Hd8aHy0PYajtxw0CfnV7rjkux_e0R0pZxLg7UAXae8WSBpGp0b9pRs4, status 504
+processing account 780
+Couldnt get matchlist for account TAsMaOpTgs-berydmpYC9C8SzGfseGgYWpJDB0SmQpman9Q, status 404
+processing account 800
+processing account 820
+Couldnt get matchlist for account kTnqRgaz6t-BHKnOT8CQ2DVUMOwYrLYhup_AdrHASaqTrw, status 404
+processing account 840
+Couldnt get matchlist for account AqQNES7AD4q2gAOidQ0xV3qashmPkqA7jR4yWIMeZ5HHC-c5v1GBEUip, status 404
+Couldnt get matchlist for account 5zqBqOdR8wtqkRLy3zT2l0usw12tf92ZxX3f5iIV7SC9A5A, status 404
+processing account 860
+processing account 880
+Couldnt get matchlist for account uS5QiaT_dzvSfoBHIOqdSYJ0-D1TPmN4_S9WS0scs_VhDg, status 404
+Couldnt get matchlist for account dHM_VXKFWMPniDFbU9ouuXsV0hJcMc9W2PKoK9fKcd4i51U, status 404
+Couldnt get matchlist for account dHM_VXKFWMPniDFbU9ouuXsV0hJcMc9W2PKoK9fKcd4i51U, status 404
+processing account 900
+processing account 920
+Couldnt get matchlist for account KNbqOuRkCDDjLZmVusHJQzt9dTzMJoybaPxgAbQuk0BnFwA, status 404
+Couldnt get matchlist for account 53G-LqgI6Cn467EIxVlj7rS3OddKFb0JznTWwiZ6y6SF9XA, status 504
+processing account 940
+Couldnt get matchlist for account uS5QiaT_dzvSfoBHIOqdSYJ0-D1TPmN4_S9WS0scs_VhDg, status 404
+processing elo: diamond
+processing account 0
+Couldnt get matchlist for account FbuCg52M8dBA7whf6qDtmSpnrp9Lc7FUfysC8nFSJY16Bqef24Ict0vT, status 404
+Couldnt get matchlist for account UGYSpKUam8XD3tcp8-TqZYLFwz1nK57yeGFUVYl3oyVEUQQ, status 404
+processing account 20
+processing account 40
+Couldnt get matchlist for account 0udFLzqs2daj8K08eUGtolpppb9bVMWQuVFiHN8VmIkgGQ, status 404
+Couldnt get matchlist for account YwXI33aMo_3iN1BK-5007ItuZNWivZeJUcAEjjUAeN8R8co, status 404
+Couldnt get matchlist for account Si_Ec1gfrZn8_Q9BStbeaHWMbfMvHEzlYL1J45AElErbqCo, status 404
+processing account 60
+Couldnt get matchlist for account dqsegSWWHyMsWIobrIXBv1ubcTxkfxHLuifoGWwWQHIfmA, status 404
+Couldnt get matchlist for account FbuCg52M8dBA7whf6qDtmSpnrp9Lc7FUfysC8nFSJY16Bqef24Ict0vT, status 404
+processing account 80
+Couldnt get matchlist for account unOur_XC0O7MPABoUc9B83BTVxpxDIpkgfeDx4BMZz0-hA, status 404
+Couldnt get matchlist for account aEVvYX6AOcsRJIVIzm-wuBM2XWeGLzzSIYa1pFhp_D1tsw, status 404
+Couldnt get matchlist for account EkeWbnqj99kQBfD267ExkMOReim6_BETDqMFRjlRwdjDDjs, status 404
+Couldnt get matchlist for account pNYvVjST8aGxojY-GobZjVPFiT76YRSuazMqmWcQmYaeqJc, status 404
+Couldnt get matchlist for account LVHDIqqzzzsNRTGV9HXtlu2wK9VDtYdv6EV6YOVHabjtNA, status 404
+processing account 100
+Couldnt get matchlist for account a_ztxkTl8H_TlpODaa7lpEETUGl03ou7aM_KngpLd337CA, status 404
+Couldnt get matchlist for account uQ9ejAh2KNsA8vrGEK_Cv5mIvM2nv_SMnGTPkFbXjK0, status 404
+Couldnt get matchlist for account PZ-Sd8jECfbYNLfzcdn3OOsv3iKuN01cF3IUcJVMJQHA0Q, status 404
+processing account 120
+Couldnt get matchlist for account PZ-Sd8jECfbYNLfzcdn3OOsv3iKuN01cF3IUcJVMJQHA0Q, status 404
+processing account 140
+Couldnt get matchlist for account UGYSpKUam8XD3tcp8-TqZYLFwz1nK57yeGFUVYl3oyVEUQQ, status 404
+processing account 160
+Couldnt get matchlist for account UGYSpKUam8XD3tcp8-TqZYLFwz1nK57yeGFUVYl3oyVEUQQ, status 404
+processing account 180
+Couldnt get matchlist for account sJ0zhAxFZ-QF3BN2bbAvtkfUmBM7bUAxLMSgGp6o3O-HSBM, status 404
+Couldnt get matchlist for account mYi6jC4DToaUxBv1KbFB9mGJjqfArNPqQ8ZiLL1WZPPUXA, status 404
+Couldnt get matchlist for account Rk4wBo-z5oIPujZp4-NFYG1g3VtKbt8JAakYFTvR8Wot1no, status 404
+Couldnt get matchlist for account 8P7gxVihy4O8LQfKUMrcl1g6PepAAdI7Ml3sp49dKXUVxg, status 404
+Couldnt get matchlist for account B5Uww4RhtEY_XLJORyilOorVUhDvasHqD8iapodujF1aAg, status 404
+processing account 200
+Couldnt get matchlist for account -2OsOvezXRa7rM1qdQJtPTVmajsqSvSQ6Xo_VgW56GQGtg, status 404
+Couldnt get matchlist for account 05vGGMQf98TNA3a4688bjdwui3sKsO9w47OipSuGRO7PA2s, status 504
+processing account 220
+Couldnt get matchlist for account iobn3OQ7go26vXo8uz2qXdDoX2o0Txp4EYMSq40pJm_Jojk, status 404
+processing account 240
+Couldnt get matchlist for account AW6plZbwYQKuFU1ZC428m10MJ7_GcNY_PWJhzklo4Hk, status 404
+processing account 260
+Couldnt get matchlist for account zPUzw8X6crm44Ls_Ci-sl1u7g5J6s5n99RA3LMzaagOXwQ, status 404
+Couldnt get matchlist for account JjoTbsu_4aSIlntwTk_6lD6-olotrq7dn5Yw1DySX5hBU_0, status 404
+processing account 280
+processing account 300
+processing account 320
+processing account 340
+Couldnt get matchlist for account jsFdA75uZJQBx5uOCrbrA1fP85v7wJU1dKMafqo1QteBuGw, status 404
+Couldnt get matchlist for account jsFdA75uZJQBx5uOCrbrA1fP85v7wJU1dKMafqo1QteBuGw, status 404
+Couldnt get matchlist for account L5Kij8UaOIEE5TCZYK2Dim8xGR8_seTSqapFQQZzQSPmw6c, status 504
+processing account 360
+processing account 380
+Couldnt get matchlist for account 0udFLzqs2daj8K08eUGtolpppb9bVMWQuVFiHN8VmIkgGQ, status 404
+processing account 400
+Couldnt get matchlist for account pz8Y5yE4NyBDnxdwhQ0HJqkCuIwDcHpllPw2AXtLRydQq3M, status 404
+processing account 420
+Couldnt get matchlist for account irDZxjL2TH6l6pdaypsrbCusvAwwm8pSGXC9lBabHSBKkw, status 404
+processing account 440
+Couldnt get matchlist for account tmPEzwaZ_pw4fi033F3K_3mTIqsKkGcxBY3asr4EkHH48p0, status 404
+Couldnt get matchlist for account Qp-BqIu--pUkBgAWqK7cuIAlwfgb0EOnJ0sro4K7GTpNfg, status 404
+processing account 460
+Couldnt get matchlist for account 1xXpJ_Zd2JjD6LjV8NZNWpJ4UwtNx4K4pjCpJqzKI_6WZX0, status 404
+Couldnt get matchlist for account eVu5DXHKPaxxQWunyneaOJgmYddRKs5Wal866KnY3F6jKwM, status 404
+processing account 480
+Couldnt get matchlist for account eVu5DXHKPaxxQWunyneaOJgmYddRKs5Wal866KnY3F6jKwM, status 404
+Couldnt get matchlist for account YwXI33aMo_3iN1BK-5007ItuZNWivZeJUcAEjjUAeN8R8co, status 404
+Couldnt get matchlist for account Si_Ec1gfrZn8_Q9BStbeaHWMbfMvHEzlYL1J45AElErbqCo, status 404
+processing account 500
+Couldnt get matchlist for account YwXI33aMo_3iN1BK-5007ItuZNWivZeJUcAEjjUAeN8R8co, status 404
+Couldnt get matchlist for account Si_Ec1gfrZn8_Q9BStbeaHWMbfMvHEzlYL1J45AElErbqCo, status 404
+processing account 520
+Couldnt get matchlist for account YwXI33aMo_3iN1BK-5007ItuZNWivZeJUcAEjjUAeN8R8co, status 404
+Couldnt get matchlist for account Si_Ec1gfrZn8_Q9BStbeaHWMbfMvHEzlYL1J45AElErbqCo, status 404
+Couldnt get matchlist for account YwXI33aMo_3iN1BK-5007ItuZNWivZeJUcAEjjUAeN8R8co, status 404
+Couldnt get matchlist for account Si_Ec1gfrZn8_Q9BStbeaHWMbfMvHEzlYL1J45AElErbqCo, status 404
+processing account 540
+Couldnt get matchlist for account QG70A4x5hjqAnTogE8nVDD-ZPOzCb4cio0l2pxUlaQI1AL0, status 404
+Couldnt get matchlist for account ddkdwRC8Ykf-2V7qaQcoDT3DflVPrDRIUfpAq65th0xaVw, status 404
+processing account 560
+Couldnt get matchlist for account dqsegSWWHyMsWIobrIXBv1ubcTxkfxHLuifoGWwWQHIfmA, status 404
+processing account 580
+processing account 600
+Couldnt get matchlist for account j5rnIVzdUjDGZzCacqaBiedaunnjNBKAS23NTBjw8qABQhH7EjiMXvHa, status 404
+Couldnt get matchlist for account 2sobXd2Yn36hbOkApbevCgfWEQKeQIWj2LLNBj-8gDhvDA, status 404
+processing account 620
+Couldnt get matchlist for account zNymrFEJUHNi2fZ7C3pj7-d2DC2bCpgXvFchuwv_q8w57vk, status 404
+processing account 640
+Couldnt get matchlist for account UGYSpKUam8XD3tcp8-TqZYLFwz1nK57yeGFUVYl3oyVEUQQ, status 404
+processing account 660
+Couldnt get matchlist for account 0udFLzqs2daj8K08eUGtolpppb9bVMWQuVFiHN8VmIkgGQ, status 404
+processing account 680
+Couldnt get matchlist for account YwXI33aMo_3iN1BK-5007ItuZNWivZeJUcAEjjUAeN8R8co, status 404
+Couldnt get matchlist for account Si_Ec1gfrZn8_Q9BStbeaHWMbfMvHEzlYL1J45AElErbqCo, status 404
+Couldnt get matchlist for account dqsegSWWHyMsWIobrIXBv1ubcTxkfxHLuifoGWwWQHIfmA, status 404
+processing account 700
+Couldnt get matchlist for account FbuCg52M8dBA7whf6qDtmSpnrp9Lc7FUfysC8nFSJY16Bqef24Ict0vT, status 404
+[Finished in 17678.795s]
