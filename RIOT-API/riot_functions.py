@@ -103,7 +103,6 @@ def decode_champion_ddragon(filepath):
     # Cast the file in a more readable form so I dont have to open and sort it every time I wanna go from champ Id to champ name
     with open(filepath,  encoding='utf8') as json_file:
         data = json.load(json_file)
-
     output = {}
     for name in data['data']:  # is of form {name1 : { 'key': name1, 'id': number1}, name2 : { 'key': number2, 'id': name2}}
         number = data['data'][name]['key']
@@ -113,8 +112,9 @@ def decode_champion_ddragon(filepath):
 
 
 def is_supp(player):
-    """Scoring if a player is likely to be the support, for use in finding botlaners """
-    with open(r'D:\League Analytics\RIOT-API\bot_champions.txt') as json_file:
+    """Scoring if a player is likely to be the support, for use in finding botlaners
+    Returns True/False + Score (I will get rid of score once function works well)"""
+    with open(r'D:\League Analytics\Code\RIOT-API\bot_champions.txt') as json_file:
         bot_champs = json.load(json_file)
     support_items = set([3850, 3851, 3853, 3854, 3855, 3857, 3858, 3859, 3860, 3862, 3863, 3864])
     items = grab_items(player['stats'])
@@ -131,14 +131,15 @@ def is_supp(player):
     if player['championId'] in bot_champs['SUPP'].values():
         score = score + 1
     if score>=3:
-        return True
+        return True, score
     else:
-        return False
+        return False, score
 
 
 def is_adc(player):
-    """ Scoring if the player is an ADC, for use in finding botlaners"""
-    with open(r'D:\League Analytics\RIOT-API\bot_champions.txt') as json_file:
+    """ Scoring if the player is an ADC, for use in finding botlaners
+    Returns True/False + Score (I will get rid of score once function works well)"""
+    with open(r'D:\League Analytics\Code\RIOT-API\bot_champions.txt') as json_file:
         bot_champs = json.load(json_file)
     score = 0
     items = grab_items(player['stats'])
@@ -155,16 +156,17 @@ def is_adc(player):
     if len(spells.intersection(heal_cleanse_exhaust))>0:
         if 11 not in spells:
             score = score + 1
-    print('Score', score, 'Champion ID',player['championId'],'Role',player['timeline']['role'], 'Lane:', player['timeline']['lane'], 'CSmin10:', player['timeline']['creepsPerMinDeltas']['0-10'], 'Team:',player['teamId'])
-    if score>=3:
-        return True
+    if player['timeline']['lane']!='MIDDLE' or player['timeline']['lane']!='TOP':
+        score = score + 1
+    if score>=4:
+        return True, score
     else:
-        return False
+        return False, score
 
 # I need to clean up the matches list because there are some entries that are just 503 or 504 errors
 # These have no usual keys, but do have match['status']['status_code']
 def clean_erroneous_matches(matches):
-""" Takes a list of match data (string), json's it, removes status codes !=200 """
+    """ Takes a list of match data (string), json's it, removes status codes !=200 """
     matches = matches
     n_s=[]
     for n in range(0, len(matches)):
