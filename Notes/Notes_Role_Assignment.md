@@ -24,5 +24,4 @@ For now, until I improve scoring functions, I am happy just developing my analys
 | Blue   | Leona       | BOTTOM | DUO_SUPPORT       | 1.1                 | False       | True        |
 
 
-
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Role Assignments](/League-of-Legends/Notes/role_assignments.png)
