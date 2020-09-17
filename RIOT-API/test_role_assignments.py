@@ -4,6 +4,11 @@ import sqlite3
 import time
 import json
 from tabulate import tabulate
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.style as style
+
+
 #Access the gold database
 db_path=r'D:\League Analytics\Databases\match_data_13_09_2020.db'
 connection = sqlite3.connect(db_path)
@@ -11,7 +16,7 @@ connection.row_factory = sqlite3.Row
 cursor = connection.cursor()
 
 query = '''
-SELECT id, Match_Data FROM MATCH_DATA WHERE elo='diamond' LIMIT 200
+SELECT id, Match_Data FROM MATCH_DATA WHERE elo='diamond' LIMIT 500
 '''
 
 cursor = connection.execute(query)
@@ -56,12 +61,8 @@ print(tabulate(table_rows, headers=table_header, tablefmt='orgtbl'))
 
 #Compute my assignment statistics
 bot_count_all = {}
-kk=0
-print(matches[58])
-for match in matches:
 
-    print(kk)
-    kk=kk+1
+for match in matches:
     bot_count = 0
     for player in json.loads(match)['participants']:
         ad_score=rf.is_adc(player)[0]
@@ -73,4 +74,28 @@ for match in matches:
     else:
         bot_count_all[str(bot_count)] = 1
 
-print(bot_count_all)
+# I want to pad the dictionaries before plotting so the plots are nicer
+data = [bot, bot_count_all]
+for item in data:
+    for n in range(0,6):
+        if str(n) not in item:
+            item[str(n)] = 0
+
+
+
+fig, axs = plt.subplots(1,2,figsize=(3.25,2.25),sharey=True, dpi=300)
+data = cycle(data)
+for ax in axs:
+    data_ = next(data)
+    x_axis = [x for x in data_.keys()]
+    x_axis.sort()
+    bars = [data_[x] for x in x_axis]
+    ax.bar(x_axis, bars)
+
+
+axs[0].set_title('From Rito API', fontsize=10)
+axs[1].set_title('My functions', fontsize=10)
+axs[0].set_ylabel('Number of Matches')
+axs[0].set_xlabel('                          Botlaners / Match')
+plt.subplots_adjust(left=0.2, bottom=0.23, wspace=0.1, top=0.90, right=0.98)
+plt.savefig('Notes/role_assignments.png')

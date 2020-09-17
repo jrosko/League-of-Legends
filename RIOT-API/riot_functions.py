@@ -164,8 +164,11 @@ def is_adc(player):
     if len(spells.intersection(heal_cleanse_exhaust))>0:
         if 11 not in spells:
             score = score + 1
-    if player['timeline']['lane']!='MIDDLE' or player['timeline']['lane']!='TOP':
-        score = score + 1
+    if player['timeline']['lane']=='MIDDLE' or player['timeline']['lane']=='TOP':
+        score = score + - 1
+    else:
+        if 11 not in spells:
+            score = score + 1
     if score>=4:
         return True, score
     else:
