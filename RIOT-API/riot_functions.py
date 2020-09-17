@@ -119,18 +119,20 @@ def is_supp(player):
     support_items = set([3850, 3851, 3853, 3854, 3855, 3857, 3858, 3859, 3860, 3862, 3863, 3864])
     items = grab_items(player['stats'])
     score = 0
-    if player['timeline']['role'] == 'DUO_SUPPORT' or len(items.intersection(support_items)) > 0:
-        score = score + 2
-    if player['timeline']['creepsPerMinDeltas']['0-10'] <=3.5:
+    if player['timeline']['role'] == 'DUO_SUPPORT':
+        score = score + 0.5
+    if len(items.intersection(support_items)) > 0:
+        score = score + 3
+    if player['timeline']['creepsPerMinDeltas']['0-10'] <=3:
         score = score + 1
     if player['spell1Id'] !=11 and player['spell2Id'] !=11:
         spells = set([player['spell1Id'],player['spell2Id']])
         exhaust_ignite = set([3,14])
         if len(spells.intersection(exhaust_ignite))>0:
-            score = score + 1
+            score = score + 0.5
     if player['championId'] in bot_champs['SUPP'].values():
         score = score + 1
-    if score>=3:
+    if score>=4:
         return True, score
     else:
         return False, score
