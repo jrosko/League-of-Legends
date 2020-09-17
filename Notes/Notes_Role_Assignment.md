@@ -24,4 +24,5 @@ For now, until I improve scoring functions, I am happy just developing my analys
 | Blue   | Leona       | BOTTOM | DUO_SUPPORT       | 1.1                 | False       | True        |
 
 
-![Role Assignments](/League-of-Legends/Notes/role_assignments.png)
+
+<img src="https://github.com/jrosko/jrosko.github.io/blob/master/Images/LoL-Analytics/Notes/role_assignments.png" alt="Role Assignments" width="450">
