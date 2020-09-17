@@ -1,12 +1,11 @@
 import riot_functions as rf
 from itertools import cycle
 import sqlite3
-import time
 import json
 from tabulate import tabulate
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.style as style
+
 
 
 #Access the gold database
@@ -16,15 +15,14 @@ connection.row_factory = sqlite3.Row
 cursor = connection.cursor()
 
 query = '''
-SELECT id, Match_Data FROM MATCH_DATA WHERE elo='diamond' LIMIT 500
+SELECT Match_Data FROM MATCH_DATA WHERE elo='diamond' LIMIT 500
 '''
 
 cursor = connection.execute(query)
 
-id_column=[]
+
 matches=[]
 for row in cursor.fetchall():
-    id_column.append(row['id'])
     matches.append(row['Match_Data'])
 
 matches = rf.clean_erroneous_matches(matches) # clean up 404's, 504's etc
@@ -49,8 +47,8 @@ for match in matches[0:10]:
         role = player['timeline']['role']
         lane = player['timeline']['lane']
         CS10 = player['timeline']['creepsPerMinDeltas']['0-10']
-        ad_score=rf.is_adc(player)[1]
-        supp_score=rf.is_supp(player)[1]
+        ad_score=rf.is_adc(player)[0]
+        supp_score=rf.is_supp(player)[0]
         if player['teamId'] == 100:
             team = 'Red'
         else:

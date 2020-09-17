@@ -3,7 +3,7 @@ import json
 import time
 import riot_functions as rf
 
-api_key = 'RGAPI-f30d9061-377e-4b3b-9dba-bd2319671a02'
+api_key = ''
 
 #Access the gold database
 db_path=r'D:\League Analytics\Databases\league_gold_14_06_2020.db'
