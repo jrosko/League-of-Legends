@@ -76,21 +76,27 @@ def accIds_from_match(match, seed_summoner, api_key):
         return status, accounts
 
 def lane_assignment_stats(match_list):
-    """takes a list of strings containing match data, finds lane assignment (by rito) statistics
-    returns an dictionary with percentage values of rito assigned lanes in the match_list"""
+    """takes a list of strings containing match data, finds lane assignment (by rito).
+    Returns number of times each lane was found per match in match_list, and stats on how many botlaners got found each match """
     lanes = ['TOP', 'BOTTOM', 'MIDDLE', 'JUNGLE']
-    counts = {'TOP':0, 'BOTTOM':0, 'MIDDLE':0, 'JUNGLE':0}
+    counts = {'TOP':0, 'BOTTOM':0, 'MIDDLE':0, 'JUNGLE':0} # Total counts in whole match dataset that I will later divide by number of matches
+    bot_counts={} # Counting how many games have at least 1,2,3,4 botlaners identified, will also normalise before outputting
     for match in match_list:
+            counter_2 = 0 # Another counter that isnt total count but only for this match
             for player in json.loads(match)['participants']:
                 assigned_lane = player['timeline']['lane']
+                if assigned_lane == 'BOTTOM':
+                    counter_2 = counter_2 + 1
                 if assigned_lane in lanes:
                     counts[assigned_lane]=counts[assigned_lane]+1
+            if str(counter_2) in bot_counts:
+                bot_counts[str(counter_2)] = bot_counts[str(counter_2)] + 1
+            else:
+                bot_counts[str(counter_2)] = 1
     for lane in lanes:
-        if lane=='BOTTOM':
-            counts['BOTTOM'] = counts['BOTTOM']/(4*len(match_list))
-        else:
             counts[lane]=counts[lane]/(2*len(match_list))
-    return counts
+    # Returns
+    return counts, bot_counts
 
 def grab_items(participant_stats):
     """ get a list of items bought by the player from player['stats']"""
@@ -168,7 +174,8 @@ def is_adc(player):
 # I need to clean up the matches list because there are some entries that are just 503 or 504 errors
 # These have no usual keys, but do have match['status']['status_code']
 def clean_erroneous_matches(matches):
-    """ Takes a list of match data (string), json's it, removes status codes !=200 """
+    """ Takes a list of match data (string), json's it, removes status codes !=200
+    Also some matches have no cs scores, throwing out too """
     matches = matches
     n_s=[]
     for n in range(0, len(matches)):
@@ -176,9 +183,11 @@ def clean_erroneous_matches(matches):
         if 'participants' not in match:
             if match['status']['status_code']!=200:
                 n_s.append(n)
-                n_s.reverse()
-                for m in n_s:
-                    matches.pop(m)
+        elif match['gameDuration'] < 300: # less than 5min, probably remake, will have cs scores Missing
+            n_s.append(n)
+    n_s.reverse()
+    for m in n_s:
+        matches.pop(m)
     return matches
 
 
