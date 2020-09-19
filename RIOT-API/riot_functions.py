@@ -76,21 +76,27 @@ def accIds_from_match(match, seed_summoner, api_key):
         return status, accounts
 
 def lane_assignment_stats(match_list):
-    """takes a list of strings containing match data, finds lane assignment (by rito) statistics
-    returns an dictionary with percentage values of rito assigned lanes in the match_list"""
+    """takes a list of strings containing match data, finds lane assignment (by rito).
+    Returns number of times each lane was found per match in match_list, and stats on how many botlaners got found each match """
     lanes = ['TOP', 'BOTTOM', 'MIDDLE', 'JUNGLE']
-    counts = {'TOP':0, 'BOTTOM':0, 'MIDDLE':0, 'JUNGLE':0}
+    counts = {'TOP':0, 'BOTTOM':0, 'MIDDLE':0, 'JUNGLE':0} # Total counts in whole match dataset that I will later divide by number of matches
+    bot_counts={} # Counting how many games have at least 1,2,3,4 botlaners identified, will also normalise before outputting
     for match in match_list:
+            counter_2 = 0 # Another counter that isnt total count but only for this match
             for player in json.loads(match)['participants']:
                 assigned_lane = player['timeline']['lane']
+                if assigned_lane == 'BOTTOM':
+                    counter_2 = counter_2 + 1
                 if assigned_lane in lanes:
                     counts[assigned_lane]=counts[assigned_lane]+1
+            if str(counter_2) in bot_counts:
+                bot_counts[str(counter_2)] = bot_counts[str(counter_2)] + 1
+            else:
+                bot_counts[str(counter_2)] = 1
     for lane in lanes:
-        if lane=='BOTTOM':
-            counts['BOTTOM'] = counts['BOTTOM']/(4*len(match_list))
-        else:
             counts[lane]=counts[lane]/(2*len(match_list))
-    return counts
+    # Returns
+    return counts, bot_counts
 
 def grab_items(participant_stats):
     """ get a list of items bought by the player from player['stats']"""
@@ -103,7 +109,6 @@ def decode_champion_ddragon(filepath):
     # Cast the file in a more readable form so I dont have to open and sort it every time I wanna go from champ Id to champ name
     with open(filepath,  encoding='utf8') as json_file:
         data = json.load(json_file)
-
     output = {}
     for name in data['data']:  # is of form {name1 : { 'key': name1, 'id': number1}, name2 : { 'key': number2, 'id': name2}}
         number = data['data'][name]['key']
@@ -113,32 +118,36 @@ def decode_champion_ddragon(filepath):
 
 
 def is_supp(player):
-    """Scoring if a player is likely to be the support, for use in finding botlaners """
-    with open(r'D:\League Analytics\RIOT-API\bot_champions.txt') as json_file:
+    """Scoring if a player is likely to be the support, for use in finding botlaners
+    Returns True/False + Score (I will get rid of score once function works well)"""
+    with open(r'D:\League Analytics\Code\RIOT-API\bot_champions.txt') as json_file:
         bot_champs = json.load(json_file)
     support_items = set([3850, 3851, 3853, 3854, 3855, 3857, 3858, 3859, 3860, 3862, 3863, 3864])
     items = grab_items(player['stats'])
     score = 0
-    if player['timeline']['role'] == 'DUO_SUPPORT' or len(items.intersection(support_items)) > 0:
-        score = score + 2
-    if player['timeline']['creepsPerMinDeltas']['0-10'] <=3.5:
+    if player['timeline']['role'] == 'DUO_SUPPORT':
+        score = score + 0.5
+    if len(items.intersection(support_items)) > 0:
+        score = score + 3
+    if player['timeline']['creepsPerMinDeltas']['0-10'] <=3:
         score = score + 1
     if player['spell1Id'] !=11 and player['spell2Id'] !=11:
         spells = set([player['spell1Id'],player['spell2Id']])
         exhaust_ignite = set([3,14])
         if len(spells.intersection(exhaust_ignite))>0:
-            score = score + 1
+            score = score + 0.5
     if player['championId'] in bot_champs['SUPP'].values():
         score = score + 1
-    if score>=3:
-        return True
+    if score>=4:
+        return True, score
     else:
-        return False
+        return False, score
 
 
 def is_adc(player):
-    """ Scoring if the player is an ADC, for use in finding botlaners"""
-    with open(r'D:\League Analytics\RIOT-API\bot_champions.txt') as json_file:
+    """ Scoring if the player is an ADC, for use in finding botlaners
+    Returns True/False + Score (I will get rid of score once function works well)"""
+    with open(r'D:\League Analytics\Code\RIOT-API\bot_champions.txt') as json_file:
         bot_champs = json.load(json_file)
     score = 0
     items = grab_items(player['stats'])
@@ -155,16 +164,21 @@ def is_adc(player):
     if len(spells.intersection(heal_cleanse_exhaust))>0:
         if 11 not in spells:
             score = score + 1
-    print('Score', score, 'Champion ID',player['championId'],'Role',player['timeline']['role'], 'Lane:', player['timeline']['lane'], 'CSmin10:', player['timeline']['creepsPerMinDeltas']['0-10'], 'Team:',player['teamId'])
-    if score>=3:
-        return True
+    if player['timeline']['lane']=='MIDDLE' or player['timeline']['lane']=='TOP':
+        score = score + - 1
     else:
-        return False
+        if 11 not in spells:
+            score = score + 1
+    if score>=4:
+        return True, score
+    else:
+        return False, score
 
 # I need to clean up the matches list because there are some entries that are just 503 or 504 errors
 # These have no usual keys, but do have match['status']['status_code']
 def clean_erroneous_matches(matches):
-""" Takes a list of match data (string), json's it, removes status codes !=200 """
+    """ Takes a list of match data (string), json's it, removes status codes !=200
+    Also some matches have no cs scores, throwing out too """
     matches = matches
     n_s=[]
     for n in range(0, len(matches)):
@@ -172,93 +186,9 @@ def clean_erroneous_matches(matches):
         if 'participants' not in match:
             if match['status']['status_code']!=200:
                 n_s.append(n)
-                n_s.reverse()
-                for m in n_s:
-                    matches.pop(m)
+        elif match['gameDuration'] < 300: # less than 5min, probably remake, will have cs scores Missing
+            n_s.append(n)
+    n_s.reverse()
+    for m in n_s:
+        matches.pop(m)
     return matches
-
-
-#
-# def get_botlaners(match_list):
-#     """takes a match list, finds blue and red botlaners"""
-#     result={} # output
-#     support_items = set([3850, 3851, 3853, 3854, 3855, 3857, 3858, 3859, 3860, 3862, 3863, 3864])
-#     #summoner spells
-#     sums = {'Flash':4, 'Ignite':14, 'Heal':7, 'Exhaust':3, 'Smite':11, 'Cleanse':1}
-#     with open(r'D:\League Analytics\RIOT-API\bot_champions.txt') as json_file:
-#         bot_champs = json.load(json_file)
-#     for match in match_list:
-#         players = json.loads(match)['participants'] #Load only participant stats
-#         #Count botlaners - using this as sort of a threshold, won't try to assign games with more than 2 orphan laners, for now
-#         botlane_count=0
-#         for player in players:
-#             if player['timeline']['lane']=='BOTTOM':
-#                 botlane_count = botlane_count + 1
-#         # Apply the "threshold"
-#         if botlane_count>=2:
-#             expected_laners = ['100_ADC', '100_SUPP', '200_ADC', '200_SUPP'] #bookkeeping
-#             laners=[]
-#             for player in players:
-#                 str_teamid = str(player['teamId'])
-#                 # Two common options are that lane is correctly assigned or un-assigned, yet the 'role' is correct
-#                 if player['timeline']['lane']=='BOTTOM' or player['timeline']['lane']=='NONE':
-#                     if player['timeline']['role'] == 'DUO_CARRY':
-#                         laners.append([player['teamId'], 'ADC', player['participantId']])
-#                         expected_laners.remove(str_teamid+'_'+'ADC')
-#                     elif player['timeline']['role'] == 'DUO_SUPPORT':
-#                         if
-#                         laners.append([player['teamId'], 'SUPP',player['participantId']])
-#                         expected_laners.remove(str_teamid+'_'+'SUPP')
-#                 elif player['timeline']['role'] == 'SOLO': # 'SOLO' laner
-#                     items = grab_items(player['stats'])
-#                     if len(items.intersection(support_items)) > 0: # has support items
-#                         if player['timeline']['creepsPerMinDeltas']['0-10'] < 3: # laning phase farm
-#                             if player['championId'] in bot_champs['SUPP'].values(): # plays a support champ in a broader sense of the meta
-#                                 laners.append([str_teamid, 'SUPP',player['participantId']])
-#                                 expected_laners.remove(str_teamid+'_'+'SUPP')
-#                     elif len(items.intersection(support_items)) ==0:
-#                         # doesnt have smite, also rule out smite for supp,
-#                         # provision for the player's lane to actually be assigned bottom here too
-#                         # if it isnt, then look further
-#                         if player['timeline']['creepsPerMinDeltas']['0-10'] > 3:
-#                             if player['championId'] in bot_champs['ADC'].values():
-#                                 laners.append([str_teamid, 'ADC',player['participantId']])
-#                                 expected_laners.remove(str_teamid+'_'+'ADC')
-#
-#
-#                     elif
-#                         else:
-#                             laners.append([player['teamId'], 'ADC',player['participantId']])
-#                             expected_laners.remove(str_teamid+'_'+'ADC')
-#                         # HERE ADD ALSO THOSE WHO ARE LANE NONE BUT ROLE DUO_SUP, DUO_CAR
-#                     elif player['timeline']['lane']=='NONE':
-#
-#             # BELOW MIGHT BECOME REDUNDANT
-#             if botlane_count==3:
-#                 #Missing laner should be last remaining in expected_laners
-#                 if expected_laners[0][4:]=='SUPP':
-#                     exp_team_id = expected_laners[0][0:3]
-#                     for player in players:
-#                         str_teamid = str(player['teamId'])
-#                         if str_teamid == exp_team_id:
-#                             items = grab_items(player['stats'])
-#                             if len(items.intersection(support_items)) > 0:
-#                                 laners.append([str_teamid, 'SUPP',player['participantId']])
-#                 if expected_laners[0][4:]='ADC':
-#                     exp_team_id = expected_laners[0][0:3]
-#                     for player in players:
-#                         str_teamid = str(player['teamId'])
-#                         if str_teamid == exp_team_id:
-#                             #grab champion_id
-#                             # i will need dict.values()
-#
-#
-#
-#             # add
-#             if botlane_count==2:
-#
-#
-#         gameId=json.loads(match)['gameId']
-#         if len(laners)==4:
-#             result[gameId]=laners
-#     return result

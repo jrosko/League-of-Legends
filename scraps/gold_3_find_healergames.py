@@ -4,7 +4,7 @@ import time
 import riot_functions as rf
 
 #Here goes the api key
-api_key='RGAPI-b3ecb956-e8db-45ab-9fba-d5e252f97387'
+api_key=''
 
 #Access the gold database
 db_path=r'D:\League Analytics\Databases\league_gold_14_06_2020.db'
